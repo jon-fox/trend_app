@@ -1,6 +1,7 @@
 import boto3
 from src.utils.logger import logger
 from openai import OpenAI
+from datetime import datetime
 
 
 try:
@@ -14,12 +15,17 @@ openai_client = OpenAI(api_key=OPENAI_API_KEY)
 
 
 def analyze_market_trend(prompt):
+    today = datetime.now().strftime("%B %d, %Y")  # Example: "April 18, 2025"
+    formatted_prompt = prompt.replace("{{DATE}}", today)
+
+    logger.info(f"Updating prompt with todays date: {today}")
+
     try:
         response = openai_client.chat.completions.create(
             model="gpt-4o-mini",
             messages=[
                 {"role": "system", "content": "You are a market trend analyst providing concise insights."},
-                {"role": "user", "content": f"{prompt}"}
+                {"role": "user", "content": f"{formatted_prompt}"}
             ],
             temperature=0.1
         )

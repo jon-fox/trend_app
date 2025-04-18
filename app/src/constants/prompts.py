@@ -1,7 +1,7 @@
 DAILY_NEWS_PROMPT = """
 ### **Daily News Brief - Balanced and Unbiased Overview**
 
-Please provide a summary of today's most important news stories with the goal of remaining as unbiased as possible. For each topic:
+Please provide a summary of the most important news stories for {{DATE}} (i.e. published within the past 24 hours) with the goal of remaining as unbiased as possible. For each topic:
 
 - Present **both a supportive and opposing perspective**.
 - Focus on the topics of market, business, technology, finance, and political news. Attempt to provide news for each of these listed topics.
